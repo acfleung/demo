@@ -1,0 +1,29 @@
+<h1>All Articles</h1>
+
+<p>REST - Representational State transfer - mapping HTTP verbs (get/post/put/patch/delete) to CRUD actions</p>
+<p>resources in routes.rb provides REST-ful routest to Rails resources</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.description %></td>
+        <td>
+          <%= link_to 'Show', article_path(article) %>
+          <%= link_to 'Edit', edit_article_path(article) %>
+          <%= link_to 'Delete', article_path(article), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br><%= link_to 'New', new_article_path %>

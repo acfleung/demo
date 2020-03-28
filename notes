@@ -1,0 +1,61 @@
+rails routes --expanded
+bundle install --without production
+
+
+model basics
+-----------------------------------------------
+
+every model inherits from ApplicationRecord
+
+Model name: articel
+model file name: article.rb
+model class name: Article
+Table name: articles
+
+migration command create table: rails g migration create_articles
+migration command add table column: rails g migration add_timestamps_to_articles
+
+
+
+
+
+
+creating record in rails console:
+----------------------------------------------
+
+Article.create(title: 'title one', description: 'some description')
+
+OR
+
+article = Article.new
+article.title = 'title two'
+article.description = 'some more description'
+article.save (won't save in database until you hit save)
+
+OR
+
+article = Article.new(title: 'title three', description: 'even more description')
+article.save
+
+
+
+
+
+
+editing records in rails console
+----------------------------------------------
+
+article = Article.find(2)
+article.title = 'second title'
+article.save
+
+
+
+
+
+
+deleting record in rails console
+----------------------------------------------
+
+article = Article.llast
+article.destroy

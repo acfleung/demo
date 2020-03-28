@@ -1,0 +1,35 @@
+<% if @article.errors.any? %>
+  <h2>Record was not saved in database, reasons: </h2>
+  <% @article.errors.full_messages.each do |msg| %>
+    <ul>
+      <li><%= msg %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+<p>scope -> which model are you working with? Note that form_with scope only works for new, as it provides a blank form</p>
+  <p>form_with(scope: :article, url: articles_path, local: true) V.S. form_with(model: @article, local: true)</p>
+  <p>if an instance variable is used, a url is not necessary</p>
+  <p>either way, an instance variable can be used for both new and edit, just showing what's possible</p><br>
+
+<p>url -> where to submit this form to?</p>
+<p>local: true -> form_with submits as Ajax by default, local: true sends as HTTP request instead (Get, Post, Patch etc)</p>
+
+
+<%= form_with(model: @article, local: true) do |f| %>
+
+  <p>
+    <%= f.label 'title:' %><br>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+  
+<% end %>
